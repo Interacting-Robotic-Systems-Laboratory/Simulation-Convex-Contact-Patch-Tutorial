@@ -31,7 +31,7 @@ A.h = 0.01; %(s)
 
 % initial state and configuration
 A.initial_q = [0;0;A.dim(3)/2;1;0;0;0]; % m
-A.initial_v = [1;0;0;0;0;0];  %m/s
+A.initial_v = [1;2;0;0;0;0];  %m/s
 
 % unit
 A.unit = 1; % 1 - m, 10 - dm, 100 - cm, 1000 - mm  
