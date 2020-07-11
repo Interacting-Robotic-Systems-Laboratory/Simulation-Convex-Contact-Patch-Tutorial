@@ -27,15 +27,15 @@ q_x = Q(1);
 q_y = Q(2);
 q_z = Q(3);
 
-
+if length(A.initial_q) == 3
+    Z = R*Z(7);
+    return
+end
 
 a1 = Z(7:9);
 a2 = a1;
-A = [a1;a2];
-
-
-ECP = A;
-    
+ECP = [a1;a2];
+  
 p_n = R*m*g*h; % from 0 to mgh
 
 
@@ -57,6 +57,7 @@ Con_wrench = [p_t;p_o;p_r];
     
     
     
+
     
   
   

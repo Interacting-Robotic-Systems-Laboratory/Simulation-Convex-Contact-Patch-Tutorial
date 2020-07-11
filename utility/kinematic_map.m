@@ -1,5 +1,10 @@
-function [q,nu] = kinematic_map(q_old,z,h)
+function [q,nu,R] = kinematic_map(q_old,z,h)
 
+if length(q_old) == 3
+    nu=z(1:3);
+    q = q_old +h*nu(1:3);
+    return
+end
 %% updating the position
 q = zeros(7,1);
 
@@ -25,5 +30,21 @@ q(4) = q_term(1)/q_norm;
 q(5) = q_term(2)/q_norm;
 q(6) = q_term(3)/q_norm;
 q(7) = q_term(4)/q_norm;
+
+
+q0 = q(4);
+q1 = q(5);
+q2 = q(6);
+q3 = q(7);
+
+E = [-q1 q0 -q3 q2;
+ -q2 q3 q0 -q1;
+ -q3 -q2 q1 q0];
+
+G = [-q1 q0 q3 -q2;
+     -q2 -q3 q0 q1;
+     -q3 q2 -q1 q0];
+ 
+R = E*G';
 
 end

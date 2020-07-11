@@ -1,6 +1,4 @@
-function  movie_cylinder(A)
-N = A.N;
-
+function  snap_cylinder(A)
 
 r = A.dim(1)*A.unit;
 h = A.dim(2)*A.unit;
@@ -14,10 +12,7 @@ range =[-0.2 1.9 -1.35 0.75 0 1.5];
 
     
     
-    set(gca,'nextplot','replacechildren'); 
-    v = VideoWriter('test.avi');
-    open(v);
-    for i = 1:N
+    for i = 500:500
         
         axis(range);
         
@@ -36,7 +31,7 @@ range =[-0.2 1.9 -1.35 0.75 0 1.5];
         hold on
     % applied force and torque
    
-        if (i<=30)
+        if (i>1)&&(i<=30)
             
             p1 = [xr,yr,zr];
             p2 = [xr,yr+L,zr]';
@@ -160,9 +155,9 @@ range =[-0.2 1.9 -1.35 0.75 0 1.5];
     hold on
     a7=surf(x_t2,y_t2,z_t2,'FaceColor',[1 1 0],'EdgeColor','none');
     hold on
-    plot3([a1_cw(1),a2_cw(1)],[a1_cw(2),a2_cw(2)],[a1_cw(3),a2_cw(3)],'r','LineWidth',3);
+    plot3([a1_cw(1),a2_cw(1)],[a1_cw(2),a2_cw(2)],[a1_cw(3),a2_cw(3)],'r','LineWidth',1);
     hold on
-    plot3([a3_cw(1),a4_cw(1)],[a3_cw(2),a4_cw(2)],[a3_cw(3),a4_cw(3)],'r','LineWidth',3);
+    plot3([a3_cw(1),a4_cw(1)],[a3_cw(2),a4_cw(2)],[a3_cw(3),a4_cw(3)],'r','LineWidth',1);
     input = A.q(4:7,i);
     output = quater2rotate(input);
     direction = output(2:4);
@@ -178,13 +173,13 @@ range =[-0.2 1.9 -1.35 0.75 0 1.5];
     yunit = rr*cos(th);
     xunit = rr*sin(th);
     zunit = 0*th;
-    plot3(xunit,yunit,zunit,':k');
+    plot3(xunit,yunit,zunit,':k','LineWidth',1);
     axis('equal');
     axis(range);
     hold on
     xunit = rr*sin(th)+0.65;
     yunit = rr*cos(th)-1.2;
-    plot3(xunit,yunit,zunit,':k');
+    plot3(xunit,yunit,zunit,':k','LineWidth',1);
     
     % the obstacle
     H = eye(4);
@@ -195,16 +190,16 @@ range =[-0.2 1.9 -1.35 0.75 0 1.5];
     surf(xo2,yo2,zo2,'FaceColor',[0 1 0]);
     axis('equal');
     axis(range);
+     
     xlabel('x (m)');
     ylabel('y (m)');
     zlabel('z (m)');
     grid on
     view([-140,30]);
-    hold off
-    frame = getframe(gcf);
-    writeVideo(v,frame);
+    hold off    
+    export_fig manipulation_8.png -m3.5 -transparent
     end
-close(v);
+
 end
 
 

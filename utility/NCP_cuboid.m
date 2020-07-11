@@ -110,7 +110,7 @@ for i=1:N
     
    
 
-   [Q,Nu] = kinematic_map(q_old,A.z(:,i),h); % the function which returns the state vectors
+   [Q,Nu] = kinematic_map(q_old,A.z(:,i),h); % the function which returns the configuration and velocity of object
    
    Z = A.z(:,i); % updating the initial guess for each iteration
    A.q(:,i) = Q; 

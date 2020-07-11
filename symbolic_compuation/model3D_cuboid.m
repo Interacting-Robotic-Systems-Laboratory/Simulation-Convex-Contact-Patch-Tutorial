@@ -58,7 +58,7 @@ M = [m,0,0;0,m,0;0,0,m];
 I = [I_xx,0,0;0,I_yy,0;0,0,I_zz];
 
 syms I11 I12 I13 I21 I22 I23 I31 I32 I33 real;
-Tensor_I = [I11 I12 I13;I21 I22 I23;I31 I32 I33];
+Tensor_I = [I11 -I12 -I13;-I21 I22 -I23;-I31 -I32 I33];
 %Tensor_I = R*I*R';
 %% contact force 
 syms p_t p_o p_r p_n real;

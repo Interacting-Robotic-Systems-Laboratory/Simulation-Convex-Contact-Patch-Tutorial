@@ -16,21 +16,22 @@ cd('convex_contact_patches_interface')
 A = struct();
 
 % mass of the object
-A.mass = 3; %(kg)
+A.mass = 75; %(kg)
 A.gravity = 9.8; %(m/s^2)
 
 % approximate dimension of the object 
 A.dim=[0.1 0.3]; %(m) radius height
 
 % friction model
-A.ellipsoid = [1 1 0.1]; % the choice of e_r (m) depends on the CM
-A.cof = 0.22;
+A.ellipsoid = [1 1 0.05]; % the choice of e_r (m) depends on the CM
+A.cof = 0.8;
 
 % time step
 A.h = 0.01; %(s)
 
 % initial state and configuration
 A.initial_q = [0;0;A.dim(2)/2;1;0;0;0]; % m
+%A.initial_q = [0;0;A.dim(1);cos(pi/4);sin(pi/4);0;0]; % m
 A.initial_v = [0;0;0;0;0;0];  %m/s
 
 % unit
@@ -44,4 +45,4 @@ A = planner_cylinder(A);
 
 A = NCP_cylinder(A);
 
-movie_dumbbell(A);
+movie_cylinder(A);

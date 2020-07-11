@@ -1,4 +1,4 @@
-function A = NCP_cylinder(A)
+function A = NCP_dumbbell(A)
 unit = A.unit;
 N = A.N;
 
@@ -60,16 +60,47 @@ nu_old(4:6,1) = A.initial_v(4:6);
  
  fun = A.fun;
  Q = q_old;
-
+ theta_z = 0;
 for i=1:N
-        p_x = A.Impulses(i,1);
-        p_y = A.Impulses(i,2);
-        p_z = A.Impulses(i,3);
-        p_xt = A.Impulses(i,4);
-        p_yt = A.Impulses(i,5);
-        p_zt = A.Impulses(i,6);
+        p_x = 0;
+        p_y = 0;
+        p_z = 0;
+        p_xt = 0;
+        p_yt = 0;
+        p_zt = 0;
+
+    if i <= 3
+        p_y = A.Total(i);
+        p_xt = -p_y*heg/2;
+    elseif (i> 100)&&(i<106)
+        
+        p_x = A.Total(i);
        
-    
+    elseif i>=106
+       if i == 106
+            w_y = nu_old(5);
+       end
+       
+        w_z = nu_old(6);
+        R = [cos(theta_z) sin(theta_z) 0;
+            -sin(theta_z) cos(theta_z) 0;
+            0 0 1];
+        theta_z = theta_z+w_z*h;
+
+        w_r = R*nu_old(4:6);
+        A.w_r(:,i) = w_r;
+       
+
+        if abs(w_r(3))<0.3
+            p_x = A.Total(i)*cos(theta_z);
+            p_y = A.Total(i)*sin(theta_z);
+            p_zt = A.Total(i)*heg/2;
+        end
+       
+        
+      
+    end
+    A.input(:,i) = [p_x;p_y;p_z;p_xt;p_yt;p_zt];
     
     tic;
     [A.z(:,i),~,~,~,status] = pathmcp(Z,l,u,fun);
@@ -117,7 +148,7 @@ for i=1:N
     
    
 
-   [Q,Nu,R] = kinematic_map(q_old,A.z(:,i),h); % the function which returns the state vectors
+   [Q,Nu] = kinematic_map(q_old,A.z(:,i),h); % the function which returns the state vectors
    
    Z = A.z(:,i); % updating the initial guess for each iteration
    A.q(:,i) = Q; 

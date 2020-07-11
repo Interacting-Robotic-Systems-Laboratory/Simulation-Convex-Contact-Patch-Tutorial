@@ -73,7 +73,7 @@ p_n = z(24);
 % 1. [qo(z) q1(z) q2(z) q3(z)] - Quaternions, which depends on z
 % 2. Rij(qo,q1,q2,q3) - elements in rotation matrix, which depends on the quaternion
 % 3. Iij(qo,q1,q2,q3) - elements in RIR', which depends on the quaternion
-% 3. q_x(z),q_y(z),q_z(z) - position vector in l+1, which depends on q_old and z
+% 4. q_x(z),q_y(z),q_z(z) - position vector in l+1, which depends on q_old and z
 
 % Thus system of equations F can be described by the unknown variables z or
 % with intermediate variables:
@@ -86,7 +86,6 @@ p_n = z(24);
 % J2 = d[z,Rij(qo,q1,q2,q3),Iij(qo,q1,q2,q3),q_x(z),q_y(z),q_z(z)]/d[z,qo,q1,q2,q3] 
 % J3 = d[z,qo(z),q1(z),q2(z),q3(z)]/dz 
 
-%% intermediate variables
 q0 = -(2*((h*q1_o*w_x)/2 - q0_o + (h*q2_o*w_y)/2 + (h*q3_o*w_z)/2))/(h^2*w_x^2 + h^2*w_y^2 + h^2*w_z^2 + 4)^(1/2);
 q1 = (2*(q1_o + (h*q0_o*w_x)/2 + (h*q3_o*w_y)/2 - (h*q2_o*w_z)/2))/(h^2*w_x^2 + h^2*w_y^2 + h^2*w_z^2 + 4)^(1/2);
 q2 = (2*(q2_o - (h*q3_o*w_x)/2 + (h*q0_o*w_y)/2 + (h*q1_o*w_z)/2))/(h^2*w_x^2 + h^2*w_y^2 + h^2*w_z^2 + 4)^(1/2);

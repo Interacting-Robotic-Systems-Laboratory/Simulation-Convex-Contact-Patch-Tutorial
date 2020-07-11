@@ -8,18 +8,23 @@ infty = 1e20;
 e_t = A.ellipsoid(1);
 e_o = A.ellipsoid(2);
 e_r = A.ellipsoid(3)*unit;
+
 mu =A.cof;
-
-
-
-
 m = A.mass;
 g = A.gravity*unit;
 h = A.h;
 
-
 R = rand;
-
+if length(A.initial_q) == 3
+    A.l(1:5,1) = -infty;
+    A.l(6:7,1) = 0;
+    A.u(1:7,1) = infty;
+    
+    A.Z = [A.initial_v;0;0;0;0]; 
+    A.fun = 'mcp_funjac_point';
+    A.check = @mcp_funjac_point;
+    return
+end
 
 nu = A.initial_v; 
 nu(1:3) = nu(1:3)*unit;
