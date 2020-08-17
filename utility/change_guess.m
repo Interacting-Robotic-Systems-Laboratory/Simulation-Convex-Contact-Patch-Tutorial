@@ -27,7 +27,7 @@ q_x = Q(1);
 q_y = Q(2);
 q_z = Q(3);
 
-if length(A.initial_q) == 3
+if strcmp(A.object,'particle') == 1
     Z = R*Z(7);
     return
 end
@@ -61,12 +61,15 @@ Con_wrench = [p_t;p_o;p_r];
     
   
   
-if size(A.dim,2) == 2   
+if strcmp(A.object,'cylinder') == 1 
     La = [0;0;0;1];
      
     Z = [nu;ECP;Con_wrench;sig;La;p_n];
-elseif size(A.dim,2) == 3
+elseif strcmp(A.object,'cube') == 1
     La = [0;0;0;1;0;0;0];
+    Z = [nu;ECP;Con_wrench;sig;La;p_n];
+elseif strcmp(A.object,'ellipse') == 1
+    La = [1;0];
     Z = [nu;ECP;Con_wrench;sig;La;p_n];
 end
 

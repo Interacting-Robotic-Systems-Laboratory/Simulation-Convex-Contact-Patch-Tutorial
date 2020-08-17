@@ -1,0 +1,72 @@
+Path 4.7.03: Matlab Link
+11 row/cols, 84 non-zeros, 69.42% dense.
+
+Could not open options file: path.opt
+Using defaults.
+Path 4.7.03 (Wed Nov 21 16:35:11 2012)
+Written by Todd Munson, Steven Dirkse, and Michael Ferris
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  7.5469e-001 var: (x[    5])
+Maximum of F. . . . . . . . . .  6.8103e+002 eqn: (f[    9])
+Maximum of Grad F . . . . . . .  2.0969e+003 eqn: (f[    9])
+                                            var: (x[    9])
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  2.0989e+003 eqn: (f[    9])
+Minimum Row Norm. . . . . . . .  2.0000e+000 eqn: (f[    1])
+Maximum Column Norm . . . . . .  2.0989e+003 var: (x[    9])
+Minimum Column Norm . . . . . .  2.0000e+000 var: (x[    1])
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             1.7368e+003             0.0e+000 (f[    9])
+    1     1     2    11 9.8203e+002  1.0e+000    1.0e+001 (f[    9])
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     2     2 9.8203e+002           I 9.0e+000 7.7e+002 (f[    9])
+    1     1     3     3 5.9281e+002  1.0e+000 SO 3.6e+000 4.9e+002 (f[    9])
+    2     1     4     4 3.1766e+002  1.0e+000 SO 1.4e+000 2.8e+002 (f[    9])
+    3     1     5     5 1.1741e+002  1.0e+000 SO 5.8e-001 1.1e+002 (f[    9])
+    4     1     6     6 1.1200e+002  1.0e+000 SO 2.3e-001 8.0e+001 (f[    7])
+    5     1     7     7 1.1718e+002  1.0e+000 SO 9.2e-002 1.2e+002 (f[    9])
+    6     2     8     8 1.1545e+002  1.0e+000 SM 3.7e-002 8.2e+001 (f[    7])
+    7     1     9     9 4.6054e+001  1.0e+000 SM 1.5e-002 4.5e+001 (f[    9])
+    8     2    10    10 1.4475e+000  1.0e+000 SO 5.9e-003 1.1e+000 (f[    7])
+    9     1    11    11 2.4677e-002  1.0e+000 SO 2.4e-003 1.4e-002 (f[    6])
+   10     1    12    12 2.3811e-002  1.0e+000 SO 9.4e-004 1.4e-002 (f[    6])
+   11     1    13    13 2.3811e-002  1.0e+000 SM 3.8e-004 1.4e-002 (f[    6])
+   12     2    14    14 1.1793e-002  1.0e+000 SM 1.5e-004 6.6e-003 (f[    9])
+   13     1    15    15 6.2844e-003  1.0e+000 SM 6.0e-005 4.2e-003 (f[    9])
+   14     2    16    16 3.3920e-003  1.0e+000 SM 2.4e-005 2.0e-003 (f[    2])
+   15     1    17    17 1.4548e-003  1.0e+000 SO 9.7e-006 1.2e-003 (f[    8])
+   16     1    18    18 2.3400e-008  1.0e+000 SO 3.9e-006 2.0e-008 (f[    9])
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.1832e-006 eqn: (f[    6])
+Inf-Norm of Normal Map. . . . .  1.9900e-008 eqn: (f[    9])
+Inf-Norm of Minimum Map . . . .  1.9900e-008 eqn: (f[    9])
+Inf-Norm of Fischer Function. .  1.9900e-008 eqn: (f[    9])
+Inf-Norm of Grad Fischer Fcn. .  2.9289e-006 eqn: (f[    9])
+Two-Norm of Grad Fischer Fcn. .  2.9848e-006
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  3.0250e+002 var: (x[    2])
+Maximum of F. . . . . . . . . .  3.6000e-002 eqn: (f[    3])
+Maximum of Grad F . . . . . . .  1.5378e+002 eqn: (f[    8])
+                                            var: (x[    8])
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 16
+Minor Iterations. . . . 20
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 18
+Gradient Evaluations. . 18
+Basis Time. . . . . . . 0.000000
+Total Time. . . . . . . 0.007000
+Residual. . . . . . . . 2.340025e-008

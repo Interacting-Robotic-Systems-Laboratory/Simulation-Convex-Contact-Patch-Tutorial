@@ -15,7 +15,7 @@ g = A.gravity*unit;
 h = A.h;
 
 R = rand;
-if length(A.initial_q) == 3
+if strcmp(A.object,'particle') == 1
     A.l(1:5,1) = -infty;
     A.l(6:7,1) = 0;
     A.u(1:7,1) = infty;
@@ -41,10 +41,6 @@ q_z = A.initial_q(3)*unit;
 a_z = 0; % assuming surface contact  
     
 
-A.l(1:15,1) = -infty;
-A.l(16:21,1) = 0;
-A.u(1:21,1) = infty;
-
 ECP = [q_x;q_y;a_z;q_x;q_y;a_z];
 
 v_t = v_x - w_z*(ECP(2) - q_y) + w_y*(ECP(3) - q_z);
@@ -64,7 +60,7 @@ else
 end
 
 Con_wrench = [p_t;p_o;p_r];
-if size(A.dim,2) == 2 
+if strcmp(A.object,'cylinder') == 1
 
     
     La =[0;0;0;0]; %% assuming planar contact
@@ -73,7 +69,7 @@ if size(A.dim,2) == 2
     
     A.fun = 'mcp_funjac_single_convex_contact_patch_cylinder';
     A.check = @mcp_funjac_single_convex_contact_patch_cylinder;
-elseif size(A.dim,2) == 3
+elseif strcmp(A.object,'cube') == 1
     
     A.l(1:15,1) = -infty;
     A.l(16:24,1) = 0;
@@ -86,6 +82,17 @@ elseif size(A.dim,2) == 3
     
     A.fun = 'mcp_funjac_single_convex_contact_patch_cuboid';
     A.check = @mcp_funjac_single_convex_contact_patch_cuboid;
+elseif  strcmp(A.object,'ellipse') == 1
+    A.l(1:15,1) = -Inf;
+    A.l(16:19,1) = 0;
+    A.u(1:19,1) = Inf;
+    
+    La =[0;0]; %% assuming planar contact
+    
+    A.Z = [nu;ECP;Con_wrench;sig;La;p_n]; 
+    
+    A.fun = 'mcp_funjac_single_convex_contact_patch_ellipsoid';
+    A.check = @mcp_funjac_single_convex_contact_patch_ellipsoid;
 end
 
 end

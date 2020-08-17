@@ -9,15 +9,17 @@ R = rand;
 
 Z_new = Z;
 
-if length(A.initial_q) == 3
+if strcmp(A.object,'particle') == 1
     Z_new(7) = R*Z(7);
     return
 end
 
-if size(A.dim,2) == 3
+if strcmp(A.object,'cube') == 1
    Z_new(24) = R*Z(24); 
-elseif size(A.dim,2) == 2
-    Z_new(21) = R*Z(21); 
+elseif strcmp(A.object,'cylinder') == 1
+   Z_new(21) = R*Z(21); 
+elseif strcmp(A.object,'ellipse') == 1
+   Z_new(19) = R*Z(19);
 end
 
 
