@@ -33,7 +33,7 @@ for i = 1:1:N
     zlabel('z (meter)');
     
     
-    
+    view([22,22]);
     frame = getframe(gcf);
     writeVideo(v,frame);
 end

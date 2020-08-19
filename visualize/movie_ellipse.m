@@ -57,7 +57,7 @@ for i = 1:1:N
     ylabel('y (meter)');
     zlabel('z (meter)');
     
-    view([0,-2]);
+    view([9,3]);
     hold off
     frame = getframe(gcf);
     writeVideo(v,frame);

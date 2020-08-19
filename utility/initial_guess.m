@@ -20,7 +20,7 @@ if strcmp(A.object,'particle') == 1
     A.l(6:7,1) = 0;
     A.u(1:7,1) = infty;
     
-    A.Z = [A.initial_v;0;0;0;0]; 
+    A.Z = [A.initial_v(1:3);0;0;0;0]; 
     A.fun = 'mcp_funjac_point';
     A.check = @mcp_funjac_point;
     return

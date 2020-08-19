@@ -6,7 +6,7 @@ L_r = A.dim(1)*A.unit;
 W_r = A.dim(2)*A.unit;
 H_r = A.dim(3)*A.unit;
 
-range =1*[-0.5 1.5 -1.5 0.5 0 2];
+range =3*[-0.5 0.5 -0.5 0.5 0 1];
 
     
     
@@ -41,12 +41,13 @@ for i = 1:N
     [x,y,z] = mashgrid_cuboid(L_r,W_r,H_r,H,[0;0;0]);
     
     
-    surf(x,y,z,'FaceColor',[1 1 0]);
+    surf(x,y,z,'FaceColor',[1 1 0],'FaceAlpha',0.2);
     hold on
-     
+    plot3(A.z(7,i),A.z(8,i),A.z(9,i),'r.');
+    hold on
     [X,Y] = meshgrid(range(1):range(2)-range(1):range(2),range(3):range(4)-range(3):range(4));
 	Z = X.*0+Y.*0;
-    surf(X,Y,Z,'FaceColor',[0 1 0],'Linestyle','-');  
+    surf(X,Y,Z,'FaceColor','k','FaceAlpha',0.1,'Linestyle','-');
     
     axis('equal');
     axis(range);
