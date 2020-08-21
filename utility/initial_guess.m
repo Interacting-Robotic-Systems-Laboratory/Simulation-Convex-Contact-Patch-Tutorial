@@ -61,7 +61,9 @@ end
 
 Con_wrench = [p_t;p_o;p_r];
 if strcmp(A.object,'cylinder') == 1
-
+    A.l(1:15,1) = -Inf;
+    A.l(16:21,1) = 0;
+    A.u(1:21,1) = Inf;
     
     La =[0;0;0;0]; %% assuming planar contact
     
