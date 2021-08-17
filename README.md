@@ -1,5 +1,5 @@
 # convex_contact_patch
-1. This package is used as a tutorial for our complementarity-based motion prediction algorithm. We assume the contact patch to be planar and convex.
+1. This package is used as a tutorial for our complementarity-based motion prediction algorithm. We have examples of "point", "cylinder", "cube" and "ellipsoid".
 
 2. The "convex_contact_patches_interface" folder contains 
 
