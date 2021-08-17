@@ -1,5 +1,5 @@
 # convex_contact_patch
-1. This package is used as a tutorial for our complementarity-based motion prediction algorithm. We have examples of "point", "cylinder", "cube" and "ellipsoid".
+1. This package is used as a tutorial for our complementarity-based motion prediction algorithm. We have examples of "point", "cylinder", "cube" and "ellipsoid". In In this package, there are folders of (1) "convex_contact_patches_interface", which contains the lectures and the main scripts. (2) The "funjac" folder, which contains the function and jacobian evaluation file for each scenario. (3) the "symbolic_computation" folder, (4) the "utility" folder, (5) the "pathmexmaci64" folder and the (6) visualize folder. In the following, we will introduce the "convex_contact_patches_interface" folder in detail.
 
 2. The "convex_contact_patches_interface" folder contains 
 
